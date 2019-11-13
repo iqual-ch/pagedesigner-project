@@ -1,0 +1,125 @@
+{
+  "name": "iqual-ch/pagedesigner-project",
+  "description": "Project template for Drupal 8 / Pagedesigner Suite projects",
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "authors": [
+    {
+      "name": "Internetagentur iqual GmbH",
+      "email": "info@iqual.ch",
+      "homepage": "https://www.drupal.org/iqual-gmbh",
+      "role": "Maintainer"
+    },
+    {
+      "name": "Jörg Riemenschneider",
+      "email": "info@joergriemenschneider.de",
+      "homepage": "https://www.drupal.org/u/metalbote",
+      "role": "Contributor"
+    }
+  ],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/pagedesigner_suite",
+    "source": "https://git.drupalcode.org/project/pagedesigner_suite"
+  },
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    },
+    "assets": {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  },
+  "require": {
+    "php": ">=7.0.8",
+    "composer/installers": "^1.2",
+    "oomphinc/composer-installers-extender": "^1.1",
+    "cweagans/composer-patches": "^1.6.5",
+    "drupal-composer/drupal-scaffold": "^2.5",
+    "webflo/drupal-finder": "^1.2",
+    "webmozart/path-util": "^2.3",
+    "zaporylie/composer-drupal-optimizations": "^1.0",
+    "drupal/pagedesigner_suite": "8.1.x-dev"
+  },
+  "require-dev": {
+    "drupal/console": "~1.0",
+    "drush/drush": "~9.0",
+    "drupal/coder": "~8.0"
+  },
+  "config": {
+    "bin-dir": "bin/",
+    "secure-http": false,
+    "optimize-autoloader": true,
+    "process-timeout": 0,
+    "sort-packages": true,
+    "preferred-install": {
+      "drupal/core": "dist"
+    }
+  },
+  "autoload": {
+    "classmap": [
+      "scripts/composer/ScriptHandler.php"
+    ]
+  },
+  "scripts": {
+    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+    "pre-install-cmd": [
+      "PageDesignerProject\\composer\\ScriptHandler::checkComposerVersion"
+    ],
+    "pre-update-cmd": [
+      "PageDesignerProject\\composer\\ScriptHandler::checkComposerVersion"
+    ],
+    "post-install-cmd": [
+      "PageDesignerProject\\composer\\ScriptHandler::createRequiredFiles",
+      "PageDesignerProject\\composer\\ScriptHandler::removeGitDirectories",
+      "@composer drupal-scaffold"
+    ],
+    "post-update-cmd": [
+      "PageDesignerProject\\composer\\ScriptHandler::createRequiredFiles",
+      "PageDesignerProject\\composer\\ScriptHandler::removeGitDirectories",
+      "@composer drupal-scaffold"
+    ]
+  },
+  "conflict": {
+    "drupal/drupal": "*"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-8.x-1.x": "8.1.x-dev"
+    },
+    "installer-paths": {
+      "docroot/core": [
+        "type:drupal-core"
+      ],
+      "docroot/libraries/{$name}": [
+        "type:drupal-library"
+      ],
+      "docroot/modules/contrib/{$name}": [
+        "type:drupal-module"
+      ],
+      "docroot/profiles/contrib/{$name}": [
+        "type:drupal-profile"
+      ],
+      "docroot/themes/contrib/{$name}": [
+        "type:drupal-theme"
+      ],
+      "drush/Commands/contrib/{$name}": [
+        "type:drupal-drush"
+      ]
+    },
+    "drupal-scaffold": {
+      "initial": {
+        ".editorconfig": "../.editorconfig",
+        ".gitattributes": "../.gitattributes"
+      }
+    },
+    "enable-patching": true,
+    "composer-exit-on-patch-failure": true,
+    "patchLevel": {
+      "drupal/core": "-p2"
+    }
+  }
+}
