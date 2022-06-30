@@ -1,3 +1,5 @@
+# This repo is archived and might be deleted by the end of 2022.
+
 [![](https://www.drupal.org/files/styles/grid-3/public/Logo-Iqual-Orange-2017-mit-rahmen.png?itok=Fa4T2ovY)](https://www.drupal.org/project/pagedesigner_suite)
 
 # Pagedesigner Suite Project
