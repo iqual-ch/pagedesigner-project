@@ -31,6 +31,18 @@
     "assets": {
       "type": "composer",
       "url": "https://asset-packagist.org"
+    },
+    "pagedesigner_suite": {
+      "type":"package",
+      "package": {
+        "name": "drupal/pagedesigner_suite",
+        "version":"2.0.x-dev",
+        "source": {
+          "url": "https://git.drupalcode.org/project/pagedesigner_suite",
+          "type": "git",
+          "reference":"2.0.x"
+        }
+      }
     }
   },
   "require": {
@@ -42,7 +54,7 @@
     "webflo/drupal-finder": "^1.2",
     "webmozart/path-util": "^2.3",
     "zaporylie/composer-drupal-optimizations": "^1.0",
-    "drupal/pagedesigner_suite": "2.x-dev"
+    "drupal/pagedesigner_suite": "2.0.x-dev"
   },
   "require-dev": {
     "drupal/console": "~1.0",
